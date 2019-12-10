@@ -16,4 +16,7 @@ user = Store.create(name: "Yaletown", annual_revenue: 430000, mens_apparel: 1, w
   puts "#{store[:name]} has an annual revenue of #{store[:annual_revenue]}"
 end
 
-@womens_stores = Store.where(womens_apparel: true, annual_revenue: < 1000000)
+@womens_stores = Store.where("annual_revenue < ? and womens_apparel = ?", 1000000, true)
+@womens_stores.each do |store|
+  puts "#{store[:name]} has an annual revenue of #{store[:annual_revenue]}"
+end
